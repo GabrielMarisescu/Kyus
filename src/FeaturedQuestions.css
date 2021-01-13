@@ -1,0 +1,10 @@
+.Featured__textWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.Featured__text {
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  font-size: 200%;
+}
