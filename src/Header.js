@@ -13,21 +13,8 @@ function Header() {
                 <div className="Header__Questions">Questions</div>
             </div>
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+    
             </div>
-            
-          
-     
     )
 }
 
