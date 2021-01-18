@@ -1,0 +1,66 @@
+@font-face {
+  font-family: "UbuntuBold";
+  src: url("./Fonts/Ubuntu-Bold.ttf");
+}
+@font-face {
+  font-family: "UbuntuMedium";
+  src: url("./Fonts/Ubuntu-Medium.ttf");
+}
+.Creators {
+  width: 100%;
+  height: 600px;
+  background-color: #f0f1f2;
+  font-family: UbuntuMedium;
+}
+
+.Creators__textWrapper {
+  display: flex;
+  justify-content: center;
+  font-family: UbuntuMedium;
+  font-size: 300%;
+  padding-top: 11vh;
+}
+
+.Creators__questions {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Creators__left1 {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.Creators__right1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.Creators__TotalRight,
+.Creators__TotalLeft {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-left: 5vh;
+  flex-grow: 0.3;
+  margin-top: 10vh;
+}
+
+.Creators__Text {
+  font-family: UbuntuBold;
+}
+
+.Creators__left2,
+.Creators__right2 {
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 3vh;
+}

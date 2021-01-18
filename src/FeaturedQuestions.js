@@ -11,13 +11,7 @@ function FeaturedQuestions() {
     var Day = String(today.getDate()).padStart(2, '0');
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
-
-
-
-
-
-
-
+    
     return (
         <div className="Featured">
             <div className="Featured__textWrapper">
