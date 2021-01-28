@@ -1,16 +1,23 @@
 import { Avatar } from '@material-ui/core'
-import React from 'react'
 import "./FeaturedQuestions.css"
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Bean from "./Images/mr-bean.jpg"
 import Button from "@material-ui/core/Button"
+import React, {useState} from 'react'
+import Modal from "react-modal"
+import ModalStyling from "./ModalStyling"
+
+
 
 function FeaturedQuestions() {
+    Modal.setAppElement('#root')
+    const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
     var Day = String(today.getDate()).padStart(2, '0');
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
+
     
     return (
         <div className="Featured">
@@ -51,13 +58,40 @@ function FeaturedQuestions() {
 </div>
 
 <div className="Featured__Button">
-<Button variant="text" color="inherit" fullWidth="true">
+<Button variant="text" color="inherit" fullWidth="true" onClick= {()=> {setmodalIsActive(prev => !prev)}}>
   Submit Your Own Questions!
 </Button>
+<Modal isOpen= {modalIsActive} onRequestClose={ () => {setmodalIsActive(false)}}  style={{
+    overlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.8)'
+    },
+    content: {
+      position: 'absolute',
+      top: '30vh',
+      left: '35%',
+      right: '35%',
+      bottom: '30vh',
+      border: '1px solid #ccc',
+      background: '#fff',
+      overflow: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      borderRadius: '15px',
+      outline: 'none',
+      padding: '20px',
+      minWidth: "160px",
+    }
+  }} >
+
+<ModalStyling />
+</Modal>
 </div>
   
 
- 
  
  </div>
 

@@ -9,11 +9,12 @@
 .Featured {
   width: 100%;
   height: 700px;
-  background-color: #f0f1f2;
+  background-color: #0c0c0d;
   font-family: UbuntuMedium;
 }
 
 .Featured__textWrapper {
+  color: #ffffff;
   display: flex;
   justify-content: center;
   font-family: Georgia;
@@ -34,7 +35,6 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
 }
 
 .Featured__right1 {
@@ -42,7 +42,6 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  background-color: #ffffff;
 }
 
 .Date {
@@ -51,7 +50,7 @@
 
 .Featured__TotalRight,
 .Featured__TotalLeft {
-  background-color: #ffffff;
+  background-color: #1a1a1b;
   border-radius: 10px;
   margin-left: 5vh;
   flex-grow: 0.3;
@@ -73,7 +72,7 @@
   display: flex;
   margin: auto;
   margin-top: 15vh !important ;
-  background-color: #3498db;
+  background-color: lightgreen;
   width: 55vh;
   height: 7vh;
   border-radius: 8px;
