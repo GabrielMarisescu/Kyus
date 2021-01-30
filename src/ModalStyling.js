@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import "./ModalStyling.css"
+import Button from "@material-ui/core/Button"
 
 function ModalStyling() {
     const [input, setinput] =useState("")
@@ -10,14 +11,19 @@ function ModalStyling() {
     return (
         <div className="Modal">
             <div className="Modal__Header">
-            Ask us
+            Ask Us
             </div>
             <div className="Modal__Question">
-                Question
-                
+               <p>Question</p> 
+                <input type="text" placeholder ="Write your question here !"  value = {input} onChange= { e => setinput(e.target.value)} className="input" />
             </div>
-            <input type="text" placeholder ="Write a question here"  value = {input} onChange= { e => setinput(e.target.value)} />
-            <button   onClick= {SendMessage} type ="submit">Submit </button>
+            <div className="Modal__Submit">
+                 
+            <Button   fullWidth="true"  onClick= {SendMessage}  disableElevation   >
+               SUBMIT
+            </Button>
+            </div>
+        
 
         
             

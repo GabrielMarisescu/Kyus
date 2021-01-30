@@ -23,19 +23,14 @@
   justify-content: center;
 }
 
-.About__Under {
-  margin-top: 7vh;
-  display: flex;
-  justify-content: center;
-}
-
 .About__P1,
 .About__P2 {
   font-size: 2.5vh;
-  margin: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: white;
+  margin: 40px;
+  padding-bottom: 3vh;
+  padding-left: 15vh;
+  padding-right: 10vh;
+  color: #ffffff;
 }
 
 .About__P1 {

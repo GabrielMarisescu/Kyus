@@ -6,11 +6,8 @@ function About() {
         <div className="About">
             <div className="About__Text">About Qs</div>
             <div className="About__Main">
-                <p className="About__P1">Qs is a platform for asking any type of question and polls.Words words words and more words</p>
-                <p className="About__P2">This paragraph contains amazing knowlege, please read with caution, also have a great day</p>
-            </div>
-            <div className="About__Under">
-               Made with MongoDB, Express, React, Node.
+                <p className="About__P1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nisi nulla, consequat a ultrices ac, convallis ut metus. Donec consectetur eros id suscipit pharetra. Aliquam elementum, orci sed egestas posuere, justo mi hendrerit massa, nec maximus mi nibh id ligula.</p>
+                <p className="About__P2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nisi nulla, consequat a ultrices ac, convallis ut metus. Donec consectetur eros id suscipit pharetra. Aliquam elementum, orci sed egestas posuere, justo mi hendrerit massa, nec maximus mi nibh id ligula.</p>
             </div>
             
         </div>
