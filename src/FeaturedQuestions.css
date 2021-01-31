@@ -21,51 +21,15 @@
   font-weight: bold;
   font-size: 200%;
   padding-top: 6.5vh;
-}
-
-.Featured__questions {
-  margin-top: 7vh;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.Featured__left1 {
-  margin: 10px 20px 20px 20px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.Featured__right1 {
-  margin: 10px 20px 20px 20px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
+  padding-bottom: 10vh;
 }
 
 .Date {
   font-size: smaller;
 }
 
-.Featured__TotalRight,
-.Featured__TotalLeft {
-  background-color: #1a1a1b;
-  border-radius: 10px;
-  margin-left: 5vh;
-  flex-grow: 0.3;
-  margin-top: 10vh;
-}
-
 .Featured__Text {
   font-family: UbuntuBold;
-}
-
-.Featured__left2,
-.Featured__right2 {
-  margin: 30px;
-  border-radius: 10px;
-  margin-top: 3vh;
 }
 
 .Featured__Button {
@@ -88,4 +52,46 @@
   .Featured {
     height: 800px;
   }
+}
+.Featured__TotalLeft {
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex: 0.5;
+}
+.Featured__IndicatorLeft {
+  background-color: #33343c;
+  height: 20vh;
+  flex: 0.3;
+}
+.Featured__QuestionLeft {
+  background-color: #1a1a1b;
+  flex: 0.7;
+}
+.Featured__TotalRight {
+  display: flex;
+  flex: 0.5;
+  justify-content: center;
+}
+.Featured__Main {
+  display: flex;
+  justify-content: center;
+}
+.Featured__Left,
+.Featured__Right {
+  display: flex;
+}
+
+.Featured__IndicatorLeftTop {
+  margin-bottom: 4vh;
+}
+.Featured__ArrowDown {
+  color: #2bb296;
+}
+.Featured__ArrowUp {
+  color: red;
+}
+
+#Featured__IndicatorNumber {
+  padding: 0.8vh;
 }

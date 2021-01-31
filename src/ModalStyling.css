@@ -52,8 +52,11 @@
   height: 5vh;
   background-color: #2bb296;
   color: white;
-  font-family: UbuntuMedium;
   border-radius: 10px;
   border: none;
   outline: none;
+}
+
+.Modal__Submit > button:hover {
+  background-color: #2bb296;
 }

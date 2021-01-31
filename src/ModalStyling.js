@@ -19,7 +19,7 @@ function ModalStyling() {
             </div>
             <div className="Modal__Submit">
                  
-            <Button   fullWidth="true"  onClick= {SendMessage}  disableElevation   >
+            <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage}    >
                SUBMIT
             </Button>
             </div>
