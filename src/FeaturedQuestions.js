@@ -6,9 +6,11 @@ import Modal from "react-modal"
 import ModalStyling from "./ModalStyling"
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import CircularProgress from "@material-ui/core/CircularProgress"
 
 
 function FeaturedQuestions() {
+  const [data, setData] = useState(false)
     Modal.setAppElement('#root')
     const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
@@ -23,7 +25,14 @@ function FeaturedQuestions() {
             Featured Questions
             </div>
 
-<div className="Featured__Main">
+
+            
+
+
+
+
+
+{data === false ? <CircularProgress  className="Featured__CircularProgress"/> :  <div className="Featured__Main">
 <div className="Featured__TotalLeft">
               <div className="Featured__Left">
               <div className="Featured__IndicatorLeft">
@@ -52,14 +61,7 @@ function FeaturedQuestions() {
               </div>
     
             </div>
-</div>
-            
-
-
-
-
-
-    
+</div>}
 
 <div className="Featured__Button">
 <Button variant="text" color="inherit" fullWidth="true" onClick= {()=> {setmodalIsActive(prev => !prev)}}>
