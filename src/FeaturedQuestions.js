@@ -8,9 +8,14 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import CircularProgress from "@material-ui/core/CircularProgress"
 
+
 function FeaturedQuestions() {
 
   const [data, setData] = useState(null)
+  const [ArrowUpSelector, setArrowUpSelector] = useState(true)
+  const [ArrowDownSelector, setArrowDownSelector] = useState(true)
+  const [ArrowDown, setArrowDown] = useState("")
+  const [ArrowUp,setArrowUp] = useState("")
     Modal.setAppElement('#root')
     const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
@@ -29,6 +34,32 @@ useEffect(() => {
   }, []);
 
 
+ const addLike =() => {
+   setArrowUpSelector(prev => !prev); 
+   if (ArrowUpSelector === true) {
+    setArrowUp("Featured__ArrowUp")
+   }
+   else {
+     setArrowUp("")
+   }
+  
+
+ }
+
+ 
+ const addDislike =() => {
+  setArrowDownSelector(prev => !prev); 
+  if (ArrowDownSelector === true) {
+   setArrowDown("Featured__ArrowDown")
+  }
+  else {
+    setArrowDown("")
+  }
+ 
+
+}
+
+
 
   return (
     <div className='Featured'>
@@ -40,21 +71,21 @@ useEffect(() => {
     <div className='Featured__TotalLeft'>
       <div className='Featured__Left'>
         <div className='Featured__IndicatorLeft'>
-          <ArrowDropUpIcon className='Featured__ArrowUp' />
-          <span id='Featured__IndicatorNumber'> {data[1]?.likes}</span>
-          <ArrowDropDownIcon className='Featured__ArrowDown' />
+          <ArrowDropUpIcon className={ArrowUp}  onClick= {addLike} />
+          <span id='Featured__IndicatorNumber'> {data[data.length-1]?.likes}</span>
+          <ArrowDropDownIcon className={ArrowDown} onClick={addDislike} />
         </div>
         <div className='Featured__QuestionLeft'>
           <div className='Featured__Question__Header'>
           <Avatar  className="Avatar"/>
             
-            <div className='Featured__Question__Username'>{data[1].author}</div>
+            <div className='Featured__Question__Username'>{data[data.length -1].author}</div>
       
             <div className='Featured__Question__Date'>{Day}, {Month} , {Year}</div>
            
           </div>
           <div className='Featured__Question__Question'>
-            {data[1]?.question}
+            {data[data.length -1]?.question}
           </div>
         </div>
       </div>
@@ -125,7 +156,7 @@ useEffect(() => {
             },
           }}
         >
-          <ModalStyling />
+          <ModalStyling  />
         </Modal>
       </div>
       </div>
