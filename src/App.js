@@ -11,7 +11,9 @@ function App() {
         <Header />
         <FeaturedQuestions />
         <About /> 
-        <Creators />
+        {/*
+         <Creators /> */}
+       
   
     </div>
   );

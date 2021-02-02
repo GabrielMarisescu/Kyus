@@ -10,7 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 
 function FeaturedQuestions() {
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState(null)
     Modal.setAppElement('#root')
     const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
@@ -35,31 +35,30 @@ useEffect(() => {
       <div className='Featured__textWrapper'>Featured Questions</div>
 
 
-    { data ? 
+    {  data ? 
     <div className='Featured__Main'>
     <div className='Featured__TotalLeft'>
       <div className='Featured__Left'>
         <div className='Featured__IndicatorLeft'>
           <ArrowDropUpIcon className='Featured__ArrowUp' />
-          <span id='Featured__IndicatorNumber'>0</span>
+          <span id='Featured__IndicatorNumber'> {data[1]?.likes}</span>
           <ArrowDropDownIcon className='Featured__ArrowDown' />
         </div>
         <div className='Featured__QuestionLeft'>
           <div className='Featured__Question__Header'>
-            <div className='Featured__Question__Username'>{data[0].author}</div>
-            <div className='Featured__Question__Date'>{Day}</div>
-
-
-
+          <Avatar  className="Avatar"/>
+            
+            <div className='Featured__Question__Username'>{data[1].author}</div>
+      
+            <div className='Featured__Question__Date'>{Day}, {Month} , {Year}</div>
            
           </div>
           <div className='Featured__Question__Question'>
-            {data[0].question}
+            {data[1]?.question}
           </div>
         </div>
       </div>
     </div>
-    <div className='Featured__Question__Separator'></div>
     <div className='Featured__TotalRight'>
       <div className='Featured__Right'>
         <div className='Featured__IndicatorRight'>
@@ -69,7 +68,8 @@ useEffect(() => {
         </div>
         <div className='Featured__QuestionRight'>
           <div className='Featured__Question__Header'>
-            <div className='Featured__Question__Username'>anonymous</div>
+          <Avatar  className="Avatar"/>
+            <div className='Featured__Question__Username'>{data[data.length -1].author}</div>
             <div className='Featured__Question__Date'>Feb 2 2021</div>
           </div>
           <div className='Featured__Question__Question'>
@@ -82,7 +82,7 @@ useEffect(() => {
   </div>
 : <CircularProgress  className="Featured__CircularProgress" />}  
 
-
+<div  className="Featured__ContainerButton">
       <div className='Featured__Button'>
         <Button
           variant='text'
@@ -127,6 +127,7 @@ useEffect(() => {
         >
           <ModalStyling />
         </Modal>
+      </div>
       </div>
     </div>
   );

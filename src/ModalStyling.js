@@ -8,7 +8,8 @@ function ModalStyling() {
     const SendMessage =  e => {
         axios.post("/messages/question", {
             question: input,
-            author: 'Anonymous'
+            author: 'Anonymous',
+            likes: 0,
           }).then(response => {console.log(response)}).catch( err => {
               console.log(err)});
         e.preventDefault();
