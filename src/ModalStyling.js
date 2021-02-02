@@ -1,12 +1,18 @@
 import React, {useState} from 'react'
 import "./ModalStyling.css"
 import Button from "@material-ui/core/Button"
+import axios from "./AxiosInstance"
 
 function ModalStyling() {
     const [input, setinput] =useState("")
     const SendMessage =  e => {
+        axios.post("/messages/question", {
+            question: input,
+            author: 'Anonymous'
+          }).then(response => {console.log(response)}).catch( err => {
+              console.log(err)});
         e.preventDefault();
-        console.log(input)
+
         setinput("")}
     return (
         <div className="Modal">

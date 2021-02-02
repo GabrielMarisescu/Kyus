@@ -6,18 +6,23 @@ import Modal from 'react-modal';
 import ModalStyling from './ModalStyling';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import CircularProgress from "@material-ui/core/CircularProgress"
 
 function FeaturedQuestions() {
-  Modal.setAppElement('#root');
-  const [modalIsActive, setmodalIsActive] = useState(false);
-  var today = new Date();
-  var Day = String(today.getDate()).padStart(2, '0');
-  var Month = String(today.getMonth() + 1).padStart(2, '0');
-  var Year = today.getFullYear();
+
+  const [data, setData] = useState(false)
+    Modal.setAppElement('#root')
+    const [modalIsActive,setmodalIsActive] = useState(false);
+    var today = new Date();
+    var Day = String(today.getDate()).padStart(2, '0');
+    var Month = String(today.getMonth() + 1).padStart(2, '0');
+    var Year = today.getFullYear();
+
 
   return (
     <div className='Featured'>
       <div className='Featured__textWrapper'>Featured Questions</div>
+
 
       <div className='Featured__Main'>
         <div className='Featured__TotalLeft'>
@@ -31,6 +36,13 @@ function FeaturedQuestions() {
               <div className='Featured__Question__Header'>
                 <div className='Featured__Question__Username'>anonymous</div>
                 <div className='Featured__Question__Date'>Feb 2 2021</div>
+
+
+         
+
+
+
+               
               </div>
               <div className='Featured__Question__Question'>
                 What do I do? My fries are from Greece!
@@ -55,9 +67,12 @@ function FeaturedQuestions() {
                 What do I do? My fries are from Greece!
               </div>
             </div>
+
           </div>
         </div>
       </div>
+</div>}
+
 
       <div className='Featured__Button'>
         <Button

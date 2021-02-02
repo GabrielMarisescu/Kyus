@@ -130,4 +130,10 @@
 
 #Featured__IndicatorNumber {
   padding: 0.8vh;
+
 }
+.Featured__CircularProgress {
+  margin-left: 50%;
+  color: white !important;
+}
+
