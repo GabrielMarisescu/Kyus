@@ -1,7 +1,7 @@
 import { Avatar } from '@material-ui/core';
 import './FeaturedQuestions.css';
 import Button from '@material-ui/core/Button';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import ModalStyling from './ModalStyling';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -10,7 +10,7 @@ import CircularProgress from "@material-ui/core/CircularProgress"
 
 function FeaturedQuestions() {
 
-  const [data, setData] = useState(false)
+  const [data, setData] = useState([])
     Modal.setAppElement('#root')
     const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
@@ -18,60 +18,69 @@ function FeaturedQuestions() {
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
 
+useEffect(() => {
+
+    fetch("http://localhost:5000/messages/question")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        console.log(data)
+      }).catch(err => {console.log(err)})
+  }, []);
+
+
 
   return (
     <div className='Featured'>
       <div className='Featured__textWrapper'>Featured Questions</div>
 
 
-      <div className='Featured__Main'>
-        <div className='Featured__TotalLeft'>
-          <div className='Featured__Left'>
-            <div className='Featured__IndicatorLeft'>
-              <ArrowDropUpIcon className='Featured__ArrowUp' />
-              <span id='Featured__IndicatorNumber'>0</span>
-              <ArrowDropDownIcon className='Featured__ArrowDown' />
-            </div>
-            <div className='Featured__QuestionLeft'>
-              <div className='Featured__Question__Header'>
-                <div className='Featured__Question__Username'>anonymous</div>
-                <div className='Featured__Question__Date'>Feb 2 2021</div>
-
-
-         
-
-
-
-               
-              </div>
-              <div className='Featured__Question__Question'>
-                What do I do? My fries are from Greece!
-              </div>
-            </div>
-          </div>
+    { data ? 
+    <div className='Featured__Main'>
+    <div className='Featured__TotalLeft'>
+      <div className='Featured__Left'>
+        <div className='Featured__IndicatorLeft'>
+          <ArrowDropUpIcon className='Featured__ArrowUp' />
+          <span id='Featured__IndicatorNumber'>0</span>
+          <ArrowDropDownIcon className='Featured__ArrowDown' />
         </div>
-        <div className='Featured__Question__Separator'></div>
-        <div className='Featured__TotalRight'>
-          <div className='Featured__Right'>
-            <div className='Featured__IndicatorRight'>
-              <ArrowDropUpIcon className='Featured__ArrowUp' />
-              <span id='Featured__IndicatorNumber'>0</span>
-              <ArrowDropDownIcon className='Featured__ArrowDown' />
-            </div>
-            <div className='Featured__QuestionRight'>
-              <div className='Featured__Question__Header'>
-                <div className='Featured__Question__Username'>anonymous</div>
-                <div className='Featured__Question__Date'>Feb 2 2021</div>
-              </div>
-              <div className='Featured__Question__Question'>
-                What do I do? My fries are from Greece!
-              </div>
-            </div>
+        <div className='Featured__QuestionLeft'>
+          <div className='Featured__Question__Header'>
+            <div className='Featured__Question__Username'>{data[0].author}</div>
+            <div className='Featured__Question__Date'>{Day}</div>
 
+
+
+           
+          </div>
+          <div className='Featured__Question__Question'>
+            {data[0].question}
           </div>
         </div>
       </div>
-</div>}
+    </div>
+    <div className='Featured__Question__Separator'></div>
+    <div className='Featured__TotalRight'>
+      <div className='Featured__Right'>
+        <div className='Featured__IndicatorRight'>
+          <ArrowDropUpIcon className='Featured__ArrowUp' />
+          <span id='Featured__IndicatorNumber'>0</span>
+          <ArrowDropDownIcon className='Featured__ArrowDown' />
+        </div>
+        <div className='Featured__QuestionRight'>
+          <div className='Featured__Question__Header'>
+            <div className='Featured__Question__Username'>anonymous</div>
+            <div className='Featured__Question__Date'>Feb 2 2021</div>
+          </div>
+          <div className='Featured__Question__Question'>
+            Right
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+: <CircularProgress  className="Featured__CircularProgress" />}  
 
 
       <div className='Featured__Button'>
