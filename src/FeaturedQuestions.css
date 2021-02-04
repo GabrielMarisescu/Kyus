@@ -142,15 +142,11 @@
   padding: 0.8vh;
 }
 .Featured__CircularProgress {
-  margin-left: 50%;
+  margin-left: 48%;
   color: white !important;
 }
 
 .Avatar {
   width: 30px !important;
   height: 30px !important;
-}
-
-.Featured__ContainerButton {
-  margin-right: 10vh;
 }

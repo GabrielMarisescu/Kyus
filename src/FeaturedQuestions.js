@@ -7,6 +7,7 @@ import ModalStyling from './ModalStyling';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import CircularProgress from "@material-ui/core/CircularProgress"
+import axios from "axios"
 
 
 function FeaturedQuestions() {
@@ -16,6 +17,11 @@ function FeaturedQuestions() {
   const [ArrowDownSelector, setArrowDownSelector] = useState(true)
   const [ArrowDown, setArrowDown] = useState("")
   const [ArrowUp,setArrowUp] = useState("")
+  const [likes,setlikes] = useState(0)
+  const [id, setid] = useState("")
+
+
+
     Modal.setAppElement('#root')
     const [modalIsActive,setmodalIsActive] = useState(false);
     var today = new Date();
@@ -23,41 +29,68 @@ function FeaturedQuestions() {
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
 
-useEffect(() => {
 
-    fetch("http://localhost:5000/messages/question")
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("http://localhost:5000/messages/question")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data)
-      }).catch(err => {console.log(err)})
+        setlikes(data[data.length-1].likes); 
+        setid(data[data.length -1]._id);
+      }).catch(err => {console.log(err)});
+    }, 500);
+    return () => clearInterval(interval);
   }, []);
 
 
- const addLike =() => {
+  const AddLikes1 = () => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +1})
+  
+   }
+
+   
+  const MinusLikes1 = () => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -1})
+  
+   }
+
+   
+   const addLike = () =>  {
    setArrowUpSelector(prev => !prev); 
    if (ArrowUpSelector === true) {
+    setlikes( prev => prev+1);
     setArrowUp("Featured__ArrowUp")
+    AddLikes1();
    }
    else {
+    setlikes(prev => prev -1)
      setArrowUp("")
+     MinusLikes1();
    }
-  
-
  }
 
  
  const addDislike =() => {
+   
   setArrowDownSelector(prev => !prev); 
   if (ArrowDownSelector === true) {
-   setArrowDown("Featured__ArrowDown")
+    MinusLikes1();
+   setArrowDown("Featured__ArrowDown");
+   setlikes( (prev) => prev -1)
+   
   }
   else {
     setArrowDown("")
+    setlikes( (prev) => prev +1);
+    AddLikes1();
   }
  
 
 }
+
 
 
 
@@ -71,8 +104,8 @@ useEffect(() => {
     <div className='Featured__TotalLeft'>
       <div className='Featured__Left'>
         <div className='Featured__IndicatorLeft'>
-          <ArrowDropUpIcon className={ArrowUp}  onClick= {addLike} />
-          <span id='Featured__IndicatorNumber'> {data[data.length-1]?.likes}</span>
+          <ArrowDropUpIcon className={ArrowUp}  onClick= {addLike}  />
+          <span id='Featured__IndicatorNumber'> {likes}</span>
           <ArrowDropDownIcon className={ArrowDown} onClick={addDislike} />
         </div>
         <div className='Featured__QuestionLeft'>
@@ -81,7 +114,7 @@ useEffect(() => {
             
             <div className='Featured__Question__Username'>{data[data.length -1].author}</div>
       
-            <div className='Featured__Question__Date'>{Day}, {Month} , {Year}</div>
+            <div className='Featured__Question__Date'>{data[data.length -1].date}</div>
            
           </div>
           <div className='Featured__Question__Question'>
