@@ -35,6 +35,7 @@
   transition: 0.3s all;
   border: none;
   outline: none;
+  text-indent: 30px;
 }
 
 .input::placeholder {

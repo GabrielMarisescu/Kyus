@@ -19,6 +19,10 @@ function FeaturedQuestions() {
   const [ArrowUp,setArrowUp] = useState("")
   const [likes,setlikes] = useState(0)
   const [id, setid] = useState("")
+  const [OnceTogglerData,setOnceTogglerData]= useState(true)
+
+
+  
 
 
 
@@ -44,31 +48,48 @@ function FeaturedQuestions() {
   }, []);
 
 
-  const AddLikes1 = () => {
+  const AddLikes = (AddiotionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +1})
-  
-   }
-
-   
-  const MinusLikes1 = () => {
-  
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -1})
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +AddiotionalLikes})
   
    }
 
-   
+  const MinusLikes = (AddiotionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -AddiotionalLikes})
+  
+   }
+
+
+
+   const OnceTogglerMinus = () => {
+    if (OnceTogglerData === true) { setlikes( prev => prev-1)
+     ;}
+
+     else {setlikes( prev => prev-2) }
+    setOnceTogglerData( prev => !prev) ; 
+  }
+
+
    const addLike = () =>  {
    setArrowUpSelector(prev => !prev); 
-   if (ArrowUpSelector === true) {
+   
+   if  (ArrowDown === "Featured__ArrowDown")  {
+    OnceTogglerMinus();
+    setArrowUp("Featured__ArrowUp")
+    setArrowDown("");
+    AddLikes(2);
+
+   }
+  else if ((ArrowUpSelector === true) && (ArrowDown === ""))  {
     setlikes( prev => prev+1);
     setArrowUp("Featured__ArrowUp")
-    AddLikes1();
+    AddLikes(1);
    }
    else {
     setlikes(prev => prev -1)
      setArrowUp("")
-     MinusLikes1();
+     MinusLikes(1);
    }
  }
 
@@ -76,16 +97,24 @@ function FeaturedQuestions() {
  const addDislike =() => {
    
   setArrowDownSelector(prev => !prev); 
-  if (ArrowDownSelector === true) {
-    MinusLikes1();
+   if (ArrowUp === "Featured__ArrowUp")  {
+    setlikes(prev => prev -2)
+    setArrowUp("")
+    setArrowDown("Featured__ArrowDown")
+    MinusLikes(2)
+
+   }
+   else if ((ArrowDownSelector === true) && (ArrowUp === "")) {
+    MinusLikes(1);
    setArrowDown("Featured__ArrowDown");
    setlikes( (prev) => prev -1)
    
   }
   else {
-    setArrowDown("")
+
     setlikes( (prev) => prev +1);
-    AddLikes1();
+    setArrowDown("")
+    AddLikes(1);
   }
  
 
