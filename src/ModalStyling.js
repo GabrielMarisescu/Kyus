@@ -24,7 +24,10 @@ function ModalStyling() {
             question: input,
             author: 'Anonymous',
             likes: 0,
-            date: `${Day}  ${Month}  ${Year}`
+            date: `${Day}  ${Month}  ${Year}`,
+            yes:0,
+            no:0
+
           }).then(response => {console.log(response)}).catch( err => {
               console.log(err)});
         e.preventDefault();
@@ -32,7 +35,7 @@ function ModalStyling() {
         setTimeout(() => {
             window.location = `${window.location.origin}/`
             
-        }, 2000);
+        }, 1500);
 
         }
      
@@ -45,9 +48,6 @@ function ModalStyling() {
         
             setOpen(prev => !prev);
           };
-        
-       
-        
     return (
         <div className="Modal">
             <div className="Modal__Header">

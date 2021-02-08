@@ -15,14 +15,28 @@ function FeaturedQuestions() {
   const [data, setData] = useState(null)
   const [ArrowUpSelector, setArrowUpSelector] = useState(true)
   const [ArrowDownSelector, setArrowDownSelector] = useState(true)
+  const [ArrowUpSelector1, setArrowUpSelector1] = useState(true)
+  const [ArrowDownSelector1, setArrowDownSelector1] = useState(true)
   const [ArrowDown, setArrowDown] = useState("")
   const [ArrowUp,setArrowUp] = useState("")
+  const [ArrowDown1, setArrowDown1] = useState("")
+  const [ArrowUp1,setArrowUp1] = useState("")
   const [likes,setlikes] = useState(0)
+  const [likes1,setlikes1] = useState(0)
   const [id, setid] = useState("")
+  const [id2, setid2] = useState("")
   const [OnceTogglerData,setOnceTogglerData]= useState(true)
+  const [AnswersYes,setAnswersYes]= useState(0)
+  const [AnswersNo,setAnswersNo]= useState(0)
+  const [AnswersYes2,setAnswersYes2]= useState(0)
+  const [AnswersNo2,setAnswersNo2]= useState(0)
+  const [YesToggler,setYesToggler] = useState(true)
+  const [NoToggler,setNoToggler] = useState(true)
+  const [YesToggler2,setYesToggler2] = useState(true)
+  const [NoToggler2,setNoToggler2] = useState(true)
 
 
-  
+
 
 
 
@@ -40,23 +54,63 @@ function FeaturedQuestions() {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        setlikes(data[data.length-1].likes); 
+        setlikes(data[data.length-1].likes);
+        setlikes1(data[data.length-2].likes);  
         setid(data[data.length -1]._id);
+        setid2(data[data.length -2]._id);
+        setAnswersYes(data[data.length -1].yes)
+        setAnswersNo(data[data.length -1].no)
+        setAnswersYes2(data[data.length -2].yes)
+        setAnswersNo2(data[data.length -2].no)
       }).catch(err => {console.log(err)});
     }, 500);
     return () => clearInterval(interval);
   }, []);
 
 
-  const AddLikes = (AddiotionalLikes) => {
+  const AddLikes = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +AddiotionalLikes})
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +AdditionalLikes})
+  
+   }
+   const AddLikes1 = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id2}`,{likes: likes1 +AdditionalLikes})
   
    }
 
-  const MinusLikes = (AddiotionalLikes) => {
+  const MinusLikes = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -AddiotionalLikes})
+    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -AdditionalLikes})
+  
+   }
+   
+  const MinusLikes1 = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id2}`,{likes: likes1 -AdditionalLikes})
+  
+   }
+
+  
+   const PlusAnswerYes = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id}/2`,{yes: AnswersYes +AdditionalLikes})
+  
+   }
+
+   const PlusAnswerYes2 = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id2}/2`,{yes: AnswersYes2 +AdditionalLikes})
+  
+   }
+   const PlusAnswerNo = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id}/1`,{no: AnswersNo +AdditionalLikes})
+  
+   }
+   const PlusAnswerNo2 = (AdditionalLikes) => {
+  
+    axios.put(`http://localhost:5000/messages/question/${id2}/1`,{no: AnswersNo2 +AdditionalLikes})
   
    }
 
@@ -69,6 +123,8 @@ function FeaturedQuestions() {
      else {setlikes( prev => prev-2) }
     setOnceTogglerData( prev => !prev) ; 
   }
+
+
 
 
    const addLike = () =>  {
@@ -93,6 +149,27 @@ function FeaturedQuestions() {
    }
  }
 
+ const addLike1 = () =>  {
+  setArrowUpSelector1(prev => !prev); 
+  
+  if  (ArrowDown1 === "Featured__ArrowDown")  {
+   OnceTogglerMinus();
+   setArrowUp1("Featured__ArrowUp")
+   setArrowDown1("");
+   AddLikes1(2);
+
+  }
+ else if ((ArrowUpSelector1 === true) && (ArrowDown1 === ""))  {
+   setlikes1( prev => prev+1);
+   setArrowUp1("Featured__ArrowUp")
+   AddLikes1(1);
+  }
+  else {
+   setlikes1(prev => prev -1)
+    setArrowUp1("")
+    MinusLikes1(1);
+  }
+}
  
  const addDislike =() => {
    
@@ -122,6 +199,68 @@ function FeaturedQuestions() {
 
 
 
+const addDislike1 =() => {
+   
+  setArrowDownSelector1(prev => !prev); 
+   if (ArrowUp1 === "Featured__ArrowUp")  {
+    setlikes1(prev => prev -2)
+    setArrowUp1("")
+    setArrowDown1("Featured__ArrowDown")
+    MinusLikes1(2)
+
+   }
+   else if ((ArrowDownSelector1 === true) && (ArrowUp1 === "")) {
+    MinusLikes1(1);
+   setArrowDown1("Featured__ArrowDown");
+   setlikes1( (prev) => prev -1)
+   
+  }
+  else {
+
+    setlikes1( (prev) => prev +1);
+    setArrowDown1("")
+    AddLikes1(1);
+  }
+ 
+
+}
+const addAnswerYes = () =>  {
+  if  (YesToggler === true)  {
+    setAnswersYes( prev => prev +1);
+   PlusAnswerYes(1);
+   setYesToggler(false)
+  }
+}
+
+const addAnswerYes2 = () =>  {
+  if  (YesToggler2 === true)  {
+    setAnswersYes2( prev => prev +1);
+   PlusAnswerYes2(1);
+   setYesToggler2(false)
+  }
+}
+
+const addAnswerNo = () =>  {
+  if  (NoToggler === true)  {
+    setAnswersNo( prev => prev +1);
+   PlusAnswerNo(1);
+   setNoToggler(false)
+  }
+  
+}
+
+const addAnswerNo2 = () =>  {
+  if  (NoToggler2 === true)  {
+    setAnswersNo2( prev => prev +1);
+   PlusAnswerNo2(1);
+   setNoToggler2(false)
+  }
+}
+
+
+
+
+
 
   return (
     <div className='Featured'>
@@ -134,7 +273,7 @@ function FeaturedQuestions() {
       <div className='Featured__Left'>
         <div className='Featured__IndicatorLeft'>
           <ArrowDropUpIcon className={ArrowUp}  onClick= {addLike}  />
-          <span id='Featured__IndicatorNumber'> {likes}</span>
+          <span id='Featured__IndicatorNumber'> {data[data.length -1].likes}</span>
           <ArrowDropDownIcon className={ArrowDown} onClick={addDislike} />
         </div>
         <div className='Featured__QuestionLeft'>
@@ -149,25 +288,54 @@ function FeaturedQuestions() {
           <div className='Featured__Question__Question'>
             {data[data.length -1]?.question}
           </div>
+          <div className="Featured__Answers">
+          <div className="Featured__LeftText">{AnswersYes}</div>
+          <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes} >
+  Yes
+</Button></div>
         </div>
+        <div className="Featured__Answers">
+        <div className="Featured__LeftText">{AnswersNo}</div>
+          <div className="Featured__RightText">
+            <Button variant="contained" color="primary"  onClick= {addAnswerNo}>
+  No
+</Button></div>
+        </div>
+        </div>
+
+
+        
       </div>
     </div>
     <div className='Featured__TotalRight'>
       <div className='Featured__Right'>
         <div className='Featured__IndicatorRight'>
-          <ArrowDropUpIcon className='Featured__ArrowUp' />
-          <span id='Featured__IndicatorNumber'>0</span>
-          <ArrowDropDownIcon className='Featured__ArrowDown' />
+          <ArrowDropUpIcon className={ArrowUp1}  onClick= {addLike1} />
+          <span id='Featured__IndicatorNumber'> {data[data.length -2].likes}</span>
+          <ArrowDropDownIcon className={ArrowDown1}  onClick= {addDislike1} />
         </div>
         <div className='Featured__QuestionRight'>
           <div className='Featured__Question__Header'>
           <Avatar  className="Avatar"/>
-            <div className='Featured__Question__Username'>{data[data.length -1].author}</div>
-            <div className='Featured__Question__Date'>Feb 2 2021</div>
+            <div className='Featured__Question__Username'>{data[data.length -2].author}</div>
+            <div className='Featured__Question__Date'>{data[data.length -2].date}</div>
           </div>
           <div className='Featured__Question__Question'>
-            Right
+          {data[data.length -2]?.question}
           </div>
+          <div className="Featured__Answers">
+          <div className="Featured__LeftText">{AnswersYes2}</div>
+          <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes2} >
+  Yes
+</Button></div>
+        </div>
+        <div className="Featured__Answers">
+        <div className="Featured__LeftText">{AnswersNo2}</div>
+          <div className="Featured__RightText">
+            <Button variant="contained" color="primary"  onClick= {addAnswerNo2}>
+  No
+</Button></div>
+        </div>
         </div>
 
       </div>
