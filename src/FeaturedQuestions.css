@@ -89,11 +89,11 @@
 }
 
 .Featured__Question__Header {
-  margin-top: 3vh;
-  margin-left: 3vh;
+  margin-top: 1vh;
+  margin-left: 2vh;
   display: flex;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .Featured__Question__Username {
@@ -112,7 +112,6 @@
 
 .Featured__Question__Question {
   display: flex;
-  justify-content: center;
   padding-left: 10px;
 }
 
@@ -123,6 +122,7 @@
 }
 .Featured__Left,
 .Featured__Right {
+  color: #bdc3c7;
   margin-right: 10vh;
   display: flex;
 }
@@ -149,8 +149,8 @@
 }
 
 .Featured__Answers {
-  margin-top: 2vh;
-  margin-left: 3vh;
+  margin-top: 0.5vh;
+  margin-left: 1.5vh;
   display: flex;
   justify-content: center;
   align-items: center;

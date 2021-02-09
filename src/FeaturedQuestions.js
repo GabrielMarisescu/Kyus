@@ -289,13 +289,13 @@ const addAnswerNo2 = () =>  {
             {data[data.length -1]?.question}
           </div>
           <div className="Featured__Answers">
-          <div className="Featured__LeftText">{AnswersYes}</div>
+          <div className="Featured__LeftText"> {data[data.length -1].yes}</div>
           <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes} >
   Yes
 </Button></div>
         </div>
         <div className="Featured__Answers">
-        <div className="Featured__LeftText">{AnswersNo}</div>
+        <div className="Featured__LeftText"> {data[data.length -1].no}</div>
           <div className="Featured__RightText">
             <Button variant="contained" color="primary"  onClick= {addAnswerNo}>
   No
@@ -324,13 +324,13 @@ const addAnswerNo2 = () =>  {
           {data[data.length -2]?.question}
           </div>
           <div className="Featured__Answers">
-          <div className="Featured__LeftText">{AnswersYes2}</div>
+          <div className="Featured__LeftText"> {data[data.length -2].yes}</div>
           <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes2} >
   Yes
 </Button></div>
         </div>
         <div className="Featured__Answers">
-        <div className="Featured__LeftText">{AnswersNo2}</div>
+        <div className="Featured__LeftText"> {data[data.length -2].no}</div>
           <div className="Featured__RightText">
             <Button variant="contained" color="primary"  onClick= {addAnswerNo2}>
   No
