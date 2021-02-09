@@ -7,7 +7,7 @@ import ModalStyling from './ModalStyling';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import CircularProgress from "@material-ui/core/CircularProgress"
-import axios from "axios"
+import axios from  "./AxiosInstance"
 
 
 function FeaturedQuestions() {
@@ -50,7 +50,7 @@ function FeaturedQuestions() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fetch("http://localhost:5000/messages/question")
+      fetch("https://blooming-bastion-30679.herokuapp.com/messages/question")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -70,47 +70,47 @@ function FeaturedQuestions() {
 
   const AddLikes = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes +AdditionalLikes})
+    axios.put(`/messages/question/${id}`,{likes: likes +AdditionalLikes})
   
    }
    const AddLikes1 = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id2}`,{likes: likes1 +AdditionalLikes})
+    axios.put(`/messages/question/${id2}`,{likes: likes1 +AdditionalLikes})
   
    }
 
   const MinusLikes = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}`,{likes: likes -AdditionalLikes})
+    axios.put(`/messages/question/${id}`,{likes: likes -AdditionalLikes})
   
    }
    
   const MinusLikes1 = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id2}`,{likes: likes1 -AdditionalLikes})
+    axios.put(`/messages/question/${id2}`,{likes: likes1 -AdditionalLikes})
   
    }
 
   
    const PlusAnswerYes = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}/2`,{yes: AnswersYes +AdditionalLikes})
+    axios.put(`/messages/question/${id}/2`,{yes: AnswersYes +AdditionalLikes})
   
    }
 
    const PlusAnswerYes2 = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id2}/2`,{yes: AnswersYes2 +AdditionalLikes})
+    axios.put(`/messages/question/${id2}/2`,{yes: AnswersYes2 +AdditionalLikes})
   
    }
    const PlusAnswerNo = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id}/1`,{no: AnswersNo +AdditionalLikes})
+    axios.put(`/messages/question/${id}/1`,{no: AnswersNo +AdditionalLikes})
   
    }
    const PlusAnswerNo2 = (AdditionalLikes) => {
   
-    axios.put(`http://localhost:5000/messages/question/${id2}/1`,{no: AnswersNo2 +AdditionalLikes})
+    axios.put(`/messages/question/${id2}/1`,{no: AnswersNo2 +AdditionalLikes})
   
    }
 
