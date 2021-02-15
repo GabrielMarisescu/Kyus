@@ -56,16 +56,19 @@
   }
 }
 
-.Featured__TotalLeft,
-.Featured__TotalRight {
+.Featured__TotalLeft {
   color: white;
   display: flex;
   justify-content: center;
 }
 
-.Featured__IndicatorLeft,
-.Featured__IndicatorRight {
-  margin-bottom: 5vh;
+.Featured__TotalRight {
+  color: white;
+  display: flex;
+}
+
+.Featured__IndicatorLeft {
+  margin-bottom: 10vh;
   background-color: #33343c;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
@@ -75,13 +78,32 @@
   align-items: center;
   justify-content: center;
 }
+.Featured__IndicatorRight {
+  margin-bottom: 3vh;
+  background-color: #33343c;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  flex: 0.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-.Featured__QuestionLeft,
-.Featured__QuestionRight {
-  margin-bottom: 5vh;
+.Featured__QuestionLeft {
+  margin-bottom: 10vh;
   background-color: #1a1a1b;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  padding-right: 5rem;
+}
+.Featured__QuestionRight {
+  height: 90px;
+  background-color: #1a1a1b;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
@@ -120,11 +142,17 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.Featured__Left,
+.Featured__Left {
+  color: #bdc3c7;
+  margin-right: 10vh;
+  display: flex;
+}
+
 .Featured__Right {
   color: #bdc3c7;
   margin-right: 10vh;
   display: flex;
+  flex-direction: column;
 }
 
 .Featured__ArrowUp {
@@ -162,4 +190,41 @@
 }
 .Featured__RightText {
   flex: 0.8;
+}
+
+.Featured__IndicatorPlusQuestion {
+  display: flex;
+  flex-direction: row;
+}
+
+.Featured__Arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #33343c;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.Featured__Answers_Sub {
+  background-color: #1a1a1b;
+  display: flex;
+  height: 70px;
+  margin-left: 2vh;
+  margin-bottom: 1vh;
+}
+
+.Featured__Avatar__Sub {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+.Featured__AnswersRight {
+  width: 85%;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  justify-content: space-between;
 }

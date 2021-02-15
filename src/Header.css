@@ -11,10 +11,9 @@
 
 .Header__logo {
   object-fit: contain;
-  width: 2.5%;
-  margin-bottom: 1vh;
+  width: 6vh;
   margin-left: 4vh;
-  margin-top: 1vh;
+  margin-top: 2vh;
   min-width: 25px;
 }
 
@@ -22,16 +21,23 @@
   margin: auto;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .Header__Home {
   color: #2bb296;
-  padding-right: 20%;
   font-family: UbuntuBold;
+  text-decoration: none;
+  padding-right: 7vh;
 }
 
 .Header__Questions {
+  text-decoration: none;
   color: #95a5a6;
-  padding-left: 30%;
   font-family: UbuntuBold;
+  padding-left: 7vh;
+}
+
+a {
+  width: 0%;
 }

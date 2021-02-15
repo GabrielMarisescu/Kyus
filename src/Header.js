@@ -1,19 +1,20 @@
 import "./Header.css"
 import React from 'react'
 import Logo from "./Images/Logo.png"
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
         <div className="Header" >
          
-            <img  src={Logo} alt="LogoType"  className="Header__logo"/>
+           
+           <Link to ="/"  ><img  src={Logo} alt="LogoType" className="Header__logo"  /></Link>
             
             <div className="Header__Main">
-                <div className="Header__Home">Home</div>
-                <div className="Header__Questions">Questions</div>
+            <Link to="/" className="Header__Home">Home</Link>
+            <Link to="/Questions" className="Header__Questions">Questions</Link>
+        
             </div>
-            
-    
             </div>
     )
 }
