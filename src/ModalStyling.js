@@ -24,9 +24,14 @@ function ModalStyling() {
 
 
     const SendMessage =  e => {
-        setOpen(prev =>!prev)
-       
-        axios.post("/messages/question", {
+    
+        if (input === " " || input ==="" || input ==="   ") {
+          console.log(":D");
+
+        }
+        else {
+          setOpen(prev =>!prev)
+          axios.post("/messages/question", {
             question: input,
             author: 'Anonymous',
             likes: 0,
@@ -42,6 +47,9 @@ function ModalStyling() {
             window.location = `${window.location.origin}/`
             
         }, 1500);
+        }
+       
+     
 
         }
      
