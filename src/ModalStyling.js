@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button"
 import axios from "./AxiosInstance"
 import Snackbar from "@material-ui/core/Snackbar"
 import Alert from '@material-ui/lab/Alert';
-
+import Checkbox from '@material-ui/core/Checkbox';
 
 function ModalStyling() {
 
@@ -14,6 +14,12 @@ function ModalStyling() {
     var Day = String(today.getDate()).padStart(2, '0');
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
+    const [checked, setChecked] = useState(false);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+    
 
 
 
@@ -57,12 +63,26 @@ function ModalStyling() {
                <p>Question</p> 
                 <input type="text" placeholder ="Write your question here !"  value = {input} onChange= { e => setinput(e.target.value)} className="input" />
             </div>
-            <div className="Modal__Submit">
-                 
-            <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage}     >
-               SUBMIT
-            </Button>
+        
+            <div className="Featured__Checkbox">
+            <Checkbox className="checkbox"
+        checked={checked}
+        onChange={handleChange}
+        color="primary"
+     
+      /> 
+     
+      <p className="Featured__PollAnswers">Poll Answers</p>
+      
             </div>
+            { checked ? <div className="Featured__SelectAnswers"> hello </div> : null}
+            <div className="Modal__Submit">
+                 <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage} >
+                    SUBMIT
+                 </Button>
+                 </div>
+           
+            
             <Snackbar open={open}   onClose={handleClose}>
   <Alert  severity="success" onClose={handleClose}>
     Success!

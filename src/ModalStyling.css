@@ -61,3 +61,16 @@
 .Modal__Submit > button:hover {
   background-color: #2bb296;
 }
+
+.Featured__Checkbox {
+  display: flex;
+  align-content: center;
+  margin-left: 1.5vh;
+}
+.Featured__PollAnswers {
+  font-family: UbuntuMedium;
+  color: white;
+  align-self: center;
+  font-size: 2vh;
+  margin-bottom: 0.2vh;
+}
