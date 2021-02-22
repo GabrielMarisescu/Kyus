@@ -7,7 +7,7 @@ import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import axios from  "./AxiosInstance"
 import SubAnswers from './SubAnswers';
 import './QuestionRight.css';
-import CircularProgress from "@material-ui/core/CircularProgress"
+
 
 
 function QuestionRight() {
@@ -70,7 +70,7 @@ function QuestionRight() {
         </div>
         </div>
         </div>
-          : <CircularProgress  className="Featured__CircularProgress" />}
+          :   null}
           </div>
              
      
