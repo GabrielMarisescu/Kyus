@@ -8,7 +8,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 
@@ -24,7 +23,9 @@ function App() {
             <About />
           </Route>
           <Route path="/Questions" exact>
-        {/* <FullQuestions />*/} 
+        <FullQuestions />
+       
+        
             <About />
             
           </Route>

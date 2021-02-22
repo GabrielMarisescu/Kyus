@@ -1,0 +1,8 @@
+.IndicatorFix {
+  display: flex;
+  height: 7rem;
+}
+
+.Featured {
+  height: auto;
+}

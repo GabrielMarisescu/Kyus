@@ -1,0 +1,20 @@
+.Featured__Main2 {
+  background-color: #0c0c0d;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: UbuntuMedium;
+  margin-left: 10vh;
+}
+body {
+  background-color: #0c0c0d;
+}
+@font-face {
+  font-family: "UbuntuBold";
+  src: url("./Fonts/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuMedium";
+  src: url("./Fonts/Ubuntu-Medium.ttf");
+}

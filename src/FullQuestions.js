@@ -1,13 +1,17 @@
 import React from 'react'
 import "./FullQuestions.css"
+import QuestionRight from "./QuestionRight"
+import QuestionLeft  from "./QuestionLeft"
 
 function FullQuestions() {
     return (
+        <div>
         <div className="FullQuestions">
-            This is the FullQuestionsLol
-
-         
-            
+           
+           <QuestionLeft />
+           <QuestionRight />
+       
+        </div>
         </div>
     )
 }
