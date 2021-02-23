@@ -1,16 +1,21 @@
 import React from 'react'
 import "./FullQuestions.css"
-import QuestionRight from "./QuestionRight"
-import QuestionLeft  from "./QuestionLeft"
+import TotalQuestion from "./TotalQuestion"
+
 
 function FullQuestions() {
     return (
         <div>
-        <div className="FullQuestions">
-           
-           <QuestionLeft />
-           <QuestionRight />
-       
+        <div >
+           <TotalQuestion />
+           <br></br>
+           <br></br>
+           <TotalQuestion />
+           <br></br>
+           <br></br>
+           <TotalQuestion />
+      
+          
         </div>
         </div>
     )

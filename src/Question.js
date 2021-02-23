@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import React, { useState  } from 'react';
 import Modal from 'react-modal';
 import ModalStyling from './ModalStyling';
+import QuestionLeft from "./QuestionLeft"
+import QuestionRight from "./QuestionRight"
 
 import FullQuestions from './FullQuestions';
 
@@ -16,7 +18,10 @@ function Question() {
     return (
         <div className="Featured">
  <div className='Featured__textWrapper'>Featured Questions</div>
- <FullQuestions />
+ <div className="Featured__Fix">
+<QuestionLeft />
+<QuestionRight />
+</div>
 
 
         

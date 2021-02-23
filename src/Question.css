@@ -228,3 +228,8 @@
   font-size: 13px;
   justify-content: space-between;
 }
+
+.Featured__Fix {
+  display: flex;
+  margin-left: 17vh;
+}

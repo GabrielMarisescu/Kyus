@@ -4,7 +4,6 @@ import { Avatar } from '@material-ui/core';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
-import axios from  "./AxiosInstance"
 import SubAnswers from './SubAnswers';
 import './QuestionRight.css';
 

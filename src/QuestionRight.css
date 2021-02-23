@@ -1,6 +1,7 @@
 .IndicatorFix {
   display: flex;
   height: 7rem;
+  margin-bottom: 2vh;
 }
 
 .Featured {
