@@ -22,8 +22,9 @@ function QuestionLeft() {
             setid(data[data.length -1]._id);
             setAnswersYes(data[data.length -1].yes)
             setAnswersNo(data[data.length -1].no)
+            console.log("This is a fetch function")
           }).catch(err => {console.log(err)});
-        }, 500);
+        }, 750);
         return () => clearInterval(interval);
       }, []);
     
@@ -149,16 +150,16 @@ function QuestionLeft() {
               <div className='Featured__Question__Header'>
               <Avatar  className="Avatar"/>
                 
-                <div className='Featured__Question__Username'>Author/Anon</div>
+                <div className='Featured__Question__Username'>{data[data.length -1].author}</div>
           
-                <div className='Featured__Question__Date'>Date</div>
+                <div className='Featured__Question__Date'>{data[data.length -1].date}</div>
                
               </div>
               <div className='Featured__Question__Question'>
-                This is the question
+              {data[data.length -1].question}
               </div>
               <div className="Featured__Answers">
-              <div className="Featured__LeftText"> YesNumber</div>
+              <div className="Featured__LeftText">{data[data.length -1].yes}</div>
               <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes} >
       Yes
     </Button></div>

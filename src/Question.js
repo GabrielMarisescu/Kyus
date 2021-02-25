@@ -7,7 +7,6 @@ import ModalStyling from './ModalStyling';
 import QuestionLeft from "./QuestionLeft"
 import QuestionRight from "./QuestionRight"
 
-import FullQuestions from './FullQuestions';
 
 function Question() {
   Modal.setAppElement('#root')

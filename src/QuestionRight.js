@@ -21,7 +21,7 @@ function QuestionRight() {
         setData(data);
        
       }).catch(err => {console.log(err)});
-    }, 500);
+    }, 750);
     return () => clearInterval(interval);
   }, []);
 

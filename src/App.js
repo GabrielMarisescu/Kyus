@@ -1,9 +1,9 @@
 import Header from "./Header"
 import './App.css';
-import FeaturedQuestions from "./FeaturedQuestions"
 import About from "./About"
 import Creators from "./Creators"
 import FullQuestions from "./FullQuestions"
+import Question from "./Question"
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +19,7 @@ function App() {
         <Switch>
          
           <Route path="/" exact>
-            <FeaturedQuestions />
+            <Question />
             <About />
           </Route>
           <Route path="/Questions" exact>
