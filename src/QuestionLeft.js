@@ -11,26 +11,8 @@ import "./QuestionLeft.css"
 
 function QuestionLeft() {
 
-    
-    useEffect(() => {
-        const interval = setInterval(() => {
-          fetch("https://blooming-bastion-30679.herokuapp.com/messages/question")
-          .then((response) => response.json())
-          .then((data) => {
-            setData(data);
-            setlikes(data[data.length-1].likes); 
-            setid(data[data.length -1]._id);
-            setAnswersYes(data[data.length -1].yes)
-            setAnswersNo(data[data.length -1].no)
-            console.log("This is a fetch function")
-          }).catch(err => {console.log(err)});
-        }, 750);
-        return () => clearInterval(interval);
-      }, []);
-    
 
-
-    const [data, setData] = useState(null)
+    const [data, setData] = useState("")
     const [ArrowUpSelector, setArrowUpSelector] = useState(true)
     const [ArrowDownSelector, setArrowDownSelector] = useState(true)
     const [ArrowDown, setArrowDown] = useState("")
@@ -44,6 +26,23 @@ function QuestionLeft() {
     const [NoToggler,setNoToggler] = useState(true)
 
     
+    useEffect(() => {
+     
+        fetch("https://blooming-bastion-30679.herokuapp.com/messages/question")
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+          setlikes(data[data.length-1].likes); 
+          setid(data[data.length -1]._id);
+          setAnswersYes(data[data.length -1].yes)
+          setAnswersNo(data[data.length -1].no)
+        }).catch(err => {console.log(err)});
+    
+  }, []);
+
+  
+
+
     const AddLikes = (AdditionalLikes,questionid,StateLikes) => {
       
         axios.put(`/messages/question/${questionid}`,{likes: StateLikes +AdditionalLikes})
@@ -52,7 +51,7 @@ function QuestionLeft() {
         axios.put(`/messages/question/${questionid}`,{likes: StateLikes -AdditionalLikes})
        }
        const PlusAnswerYes = (AdditionalLikes,questionid,StateAnswers) => { 
-        axios.put(`/messages/question/${questionid}/2`,{yes: StateAnswers +AdditionalLikes})
+        axios.put(`/messages/question/${questionid}/2`,{yes: StateAnswers +AdditionalLikes});
        }
        const PlusAnswerNo = (AdditionalLikes,questionid,StateAnswers) => {
     
@@ -60,8 +59,7 @@ function QuestionLeft() {
        }
     
        const OnceTogglerMinus = () => {
-        if (OnceTogglerData === true) { setlikes( prev => prev-1)
-         ;}
+        if (OnceTogglerData === true) { setlikes( prev => prev -1) }
     
          else {setlikes( prev => prev-2) }
         setOnceTogglerData( prev => !prev) ; 
@@ -75,18 +73,22 @@ function QuestionLeft() {
        
        if  (ArrowDown === "Featured__ArrowDown")  {
         OnceTogglerMinus();
+        setlikes( prev => prev +3 );
         setArrowUp("Featured__ArrowUp")
         setArrowDown("");
         AddLikes(2,id,likes);
+        setOnceTogglerData( prev => !prev) ;
     
        }
       else if ((ArrowUpSelector === true) && (ArrowDown === ""))  {
-        setlikes( prev => prev+1);
+        setlikes( prev => prev +1);
+        
         setArrowUp("Featured__ArrowUp")
         AddLikes(1,id,likes);
        }
        else {
         setlikes(prev => prev -1)
+    
          setArrowUp("")
          MinusLikes(1,id,likes);
        }
@@ -99,6 +101,7 @@ function QuestionLeft() {
       setArrowDownSelector(prev => !prev); 
        if (ArrowUp === "Featured__ArrowUp")  {
         setlikes(prev => prev -2)
+
         setArrowUp("")
         setArrowDown("Featured__ArrowDown")
         MinusLikes(2,id,likes)
@@ -108,6 +111,7 @@ function QuestionLeft() {
         MinusLikes(1,id,likes);
        setArrowDown("Featured__ArrowDown");
        setlikes( (prev) => prev -1)
+ 
        
       }
       else {
@@ -143,7 +147,7 @@ function QuestionLeft() {
           <div className='Featured__Left'>
             <div className='Featured__IndicatorLeft'>
               <ArrowDropUpIcon className={ArrowUp}  onClick= {addLike}  />
-              <span id='Featured__IndicatorNumber'> 1</span>
+              <span id='Featured__IndicatorNumber'> {likes}</span>
               <ArrowDropDownIcon className={ArrowDown} onClick={addDislike} />
             </div>
             <div className='Featured__QuestionLeft'>
@@ -159,13 +163,13 @@ function QuestionLeft() {
               {data[data.length -1].question}
               </div>
               <div className="Featured__Answers">
-              <div className="Featured__LeftText">{data[data.length -1].yes}</div>
+              <div className="Featured__LeftText"> {AnswersYes}</div>
               <div className="Featured__RightText"><Button variant="contained" color="secondary"  onClick= {addAnswerYes} >
       Yes
     </Button></div>
             </div>
             <div className="Featured__Answers">
-            <div className="Featured__LeftText"> {data[data.length -1].no}</div>
+            <div className="Featured__LeftText">  {AnswersNo}</div>
               <div className="Featured__RightText">
                 <Button variant="contained" color="primary"  onClick= {addAnswerNo}>
       No
