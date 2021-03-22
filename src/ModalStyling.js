@@ -9,6 +9,7 @@ import { TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 
+
 function ModalStyling() {
 
     const [input, setinput] =useState("")
@@ -24,6 +25,7 @@ function ModalStyling() {
     setChecked(event.target.checked);
   };
     
+
 
     const addAnswer = () => {
       let a = 2
@@ -104,10 +106,11 @@ function ModalStyling() {
             { checked ? <div className="Featured__SelectAnswers"> {NumOfAnswers.map(lol => (
 
 <div className="Modal__Question flex" >
-<Button onClick={addAnswer}>  <AddIcon fontSize="large" color="primary" /> </Button>
-<Button onClick={removeAnswer}>  <RemoveIcon fontSize="large" color="primary" /> </Button>
 
-<TextField id="filled-basic" label="Add"  />
+<Button onClick={addAnswer}>  <AddIcon fontSize="large" style={{ color: "#376a99" }} /> </Button>
+<Button onClick={removeAnswer}>  <RemoveIcon fontSize="large"style={{ color: "#376a99" }} /> </Button>
+
+<TextField id="filled-basic" label="Add"   />
 
 </div>
         

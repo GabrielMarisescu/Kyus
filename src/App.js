@@ -10,11 +10,26 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles/";
 
 
 function App() {
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main:"#ffffff"
+      },
+        secondary: {
+            main: '#d32f2a'
+        },
+    
+       
+      },
+});
   return (
+    
     <div className="App">
+      <MuiThemeProvider theme={theme}>
       <Router >
        <Header />
         <Switch>
@@ -32,7 +47,7 @@ function App() {
             <QuestionLeft />
            <QuestionRight />
             </div>
-            
+
             <div className="flex">
             <QuestionLeft />
            <QuestionRight />
@@ -46,8 +61,9 @@ function App() {
         {/*
          <Creators /> */}
        
-  
+       </MuiThemeProvider>
     </div>
+  
   );
 }
 
