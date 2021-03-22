@@ -11,9 +11,6 @@ import QuestionRight from "./QuestionRight"
 function Question() {
   Modal.setAppElement('#root')
   const [modalIsActive,setmodalIsActive] = useState(false);
- 
-
-   
     return (
         <div className="Featured">
  <div className='Featured__textWrapper'>Featured Questions</div>

@@ -2,7 +2,6 @@
   background-color: #0c0c0d;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   font-family: UbuntuMedium;
   margin-left: 10vh;
 }
@@ -17,4 +16,7 @@ body {
 @font-face {
   font-family: "UbuntuMedium";
   src: url("./Fonts/Ubuntu-Medium.ttf");
+}
+.Featured__QuestionLeft {
+  flex-wrap: wrap;
 }

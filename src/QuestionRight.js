@@ -1,7 +1,5 @@
 import  {React,useState,useEffect} from 'react'
-
 import { Avatar } from '@material-ui/core';
-
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import SubAnswers from './SubAnswers';
@@ -11,18 +9,16 @@ import './QuestionRight.css';
 
 function QuestionRight() {
 
-  const [data, setData] = useState(null)
+  const [data, setData] = useState({})
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      fetch("https://blooming-bastion-30679.herokuapp.com/messages/question")
+    fetch("https://blooming-bastion-30679.herokuapp.com/messages/question")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setData(data);
-       
+
       }).catch(err => {console.log(err)});
-    }, 750);
-    return () => clearInterval(interval);
   }, []);
 
 
@@ -44,11 +40,11 @@ function QuestionRight() {
               <div className='Featured__QuestionRight'>
               <div className='Featured__Question__Header'>
               <Avatar  className="Avatar"/>
-                <div className='Featured__Question__Username'>Anonymous</div>
-                <div className='Featured__Question__Date'>DATE</div>
+                <div className='Featured__Question__Username'>{data[0]?.author}</div>
+                <div className='Featured__Question__Date'>{data[0]?.date}</div>
               </div>
               <div className='Featured__Question__Question'>
-              This is a question
+              {data[0]?.question}
               </div>
               
           

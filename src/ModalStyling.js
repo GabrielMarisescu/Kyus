@@ -5,11 +5,15 @@ import axios from "./AxiosInstance"
 import Snackbar from "@material-ui/core/Snackbar"
 import Alert from '@material-ui/lab/Alert';
 import Checkbox from '@material-ui/core/Checkbox';
+import { TextField } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
 function ModalStyling() {
 
     const [input, setinput] =useState("")
     const [open, setOpen] = useState(false);
+    const [NumOfAnswers,setNOA] = useState([0])
     var today = new Date();
     var Day = String(today.getDate()).padStart(2, '0');
     var Month = String(today.getMonth() + 1).padStart(2, '0');
@@ -21,7 +25,21 @@ function ModalStyling() {
   };
     
 
+    const addAnswer = () => {
+      let a = 2
+      setNOA(prev => [...prev,a])
+    }
+    const removeAnswer = () => {
+      if (NumOfAnswers <1) {
+        return null
 
+      }
+      else{
+        NumOfAnswers.pop()
+        setNOA(prev =>[...NumOfAnswers])
+      }
+     
+    }   
 
     const SendMessage =  e => {
     
@@ -80,10 +98,25 @@ function ModalStyling() {
      
       /> 
      
-      <p className="Featured__PollAnswers">Poll Answers</p>
+      <p className="Featured__PollAnswers">Add more answers</p>
       
             </div>
-            { checked ? <div className="Featured__SelectAnswers"> hello </div> : null}
+            { checked ? <div className="Featured__SelectAnswers"> {NumOfAnswers.map(lol => (
+
+<div className="Modal__Question flex" >
+<Button onClick={addAnswer}>  <AddIcon fontSize="large" color="primary" /> </Button>
+<Button onClick={removeAnswer}>  <RemoveIcon fontSize="large" color="primary" /> </Button>
+
+<TextField id="filled-basic" label="Add"  />
+
+</div>
+        
+           
+
+
+
+
+            ))} </div> : null}
             <div className="Modal__Submit">
                  <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage} >
                     SUBMIT
