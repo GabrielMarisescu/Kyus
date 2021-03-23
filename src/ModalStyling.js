@@ -13,24 +13,33 @@ import RemoveIcon from '@material-ui/icons/Remove';
 function ModalStyling() {
 
     const [input, setinput] =useState("")
+    const [input2, setinput2] =useState("")
+    const [input3, setinput3] =useState("")
     const [open, setOpen] = useState(false);
     const [NumOfAnswers,setNOA] = useState([0])
+    const [Toggler1,setToggler1] = useState(false)
     var today = new Date();
     var Day = String(today.getDate()).padStart(2, '0');
     var Month = String(today.getMonth() + 1).padStart(2, '0');
     var Year = today.getFullYear();
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
+    setinput3("")
   };
     
 
 
     const addAnswer = () => {
-      let a = 2
+
+      if (Toggler1 === true) {
+        let a = 2
       setNOA(prev => [...prev,a])
-    }
+      setToggler1(false)
+      }
+      }
+
     const removeAnswer = () => {
       if (NumOfAnswers <1) {
         return null
@@ -47,6 +56,8 @@ function ModalStyling() {
     
         if (input === " " || input ==="" || input ==="   ") {
           console.log(":D");
+          console.log(input3)
+      
 
         }
         else {
@@ -69,12 +80,20 @@ function ModalStyling() {
         }, 1500);
         }
        
+       
      
 
         }
-     
-    
+       const ConfirmAction= () => {
+
+          setinput3(data => [...data,input2]);
+
+          setToggler1(prev => !prev)
         
+        }
+
+
+
           const handleClose = (event, reason) => {
             if (reason === 'clickaway') {
               return;
@@ -110,18 +129,15 @@ function ModalStyling() {
 <Button onClick={addAnswer}>  <AddIcon fontSize="large" style={{ color: "#376a99" }} /> </Button>
 <Button onClick={removeAnswer}>  <RemoveIcon fontSize="large"style={{ color: "#376a99" }} /> </Button>
 
-<TextField id="filled-basic" label="Add"   />
+<TextField id="filled-basic" label="Add Answers"  type="text"  onChange={e => setinput2(e.target.value)} className="Modal__TextField"  />
+<Button  onClick={ConfirmAction}  className="Modal__Confirm">Confirm</Button>
 
 </div>
         
-           
-
-
-
-
+          
             ))} </div> : null}
             <div className="Modal__Submit">
-                 <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage} >
+                 <Button   variant="text" color="inherit" fullWidth="true"  onClick= {SendMessage}  >
                     SUBMIT
                  </Button>
                  </div>

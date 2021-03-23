@@ -78,3 +78,8 @@
 .flex {
   display: flex;
 }
+
+.Modal__Confirm {
+  color: white !important;
+  margin-top: 1rem !important;
+}
